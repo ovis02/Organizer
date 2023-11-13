@@ -1,11 +1,24 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const AffichageDonneesBloc = () => {
+const AffichageDonneesBloc = ({ taches, onSupprimerTache }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.titre}>Tâches</Text>
-      <Text style={styles.message}>Il n'y a pas de tâche pour le moment.</Text>
+      {taches.length === 0 ? (
+        <Text style={styles.message}>
+          Il n'y a pas de tâche pour le moment.
+        </Text>
+      ) : (
+        taches.map((tache) => (
+          <View key={tache.id} style={styles.tacheContainer}>
+            <Text>{tache.texte}</Text>
+            <TouchableOpacity onPress={() => onSupprimerTache(tache.id)}>
+              <Text style={styles.boutonSupprimer}>Supprimer</Text>
+            </TouchableOpacity>
+          </View>
+        ))
+      )}
     </View>
   );
 };
@@ -26,6 +39,14 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 14,
     color: "#EADC1A",
+  },
+  tacheContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 5,
+  },
+  boutonSupprimer: {
+    color: "red",
   },
 });
 

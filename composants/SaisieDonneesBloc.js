@@ -8,14 +8,12 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 
-const SaisieDonneesBloc = () => {
+const SaisieDonneesBloc = ({ ajouterTache }) => {
   const [nouvelleTache, setNouvelleTache] = useState("");
 
-  const ajouterTache = () => {
-    // Vous pouvez utiliser la valeur de "nouvelleTache" comme bon vous semble
-    console.log("Nouvelle tâche:", nouvelleTache);
-    // Ajoutez ici la logique pour traiter la nouvelle tâche
-    // Par exemple, vous pouvez mettre à jour l'état global des tâches
+  const handleAjouterTache = () => {
+    ajouterTache(nouvelleTache);
+    setNouvelleTache(""); // Réinitialise le champs
   };
   const [fontsLoaded] = useFonts({
     "IngridDarling-Regular": require("../assets/fonts/IngridDarling-Regular.ttf"),
@@ -36,7 +34,7 @@ const SaisieDonneesBloc = () => {
           onChangeText={(text) => setNouvelleTache(text)}
         />
       </View>
-      <TouchableOpacity style={styles.button} onPress={ajouterTache}>
+      <TouchableOpacity style={styles.button} onPress={handleAjouterTache}>
         <Text style={styles.buttonText}>Ajouter une tâche</Text>
       </TouchableOpacity>
     </View>

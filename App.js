@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import Logo from "./composants/Logo";
 import OrganisateurTitre from "./composants/OrganisateurTitre";
@@ -7,6 +7,22 @@ import SaisieDonneesBloc from "./composants/SaisieDonneesBloc";
 import AffichageDonneesBloc from "./composants/AffichageDonneesBloc";
 
 export default function App() {
+  const [taches, setTaches] = useState([]);
+
+  const ajouterTache = (nouvelleTache) => {
+    const nouvelleTacheObj = {
+      id: Math.random(), // Générez un identifiant unique (peut être géré différemment)
+      texte: nouvelleTache,
+    };
+
+    setTaches([...taches, nouvelleTacheObj]);
+  };
+
+  const supprimerTache = (idTache) => {
+    const nouvellesTaches = taches.filter((tache) => tache.id !== idTache);
+    setTaches(nouvellesTaches);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.mainContent}>
@@ -15,13 +31,16 @@ export default function App() {
           <OrganisateurTitre />
         </View>
         <View style={styles.bloc}>
-          <StatistiquesBloc />
+          <StatistiquesBloc taches={taches} />
         </View>
         <View style={styles.bloc}>
-          <SaisieDonneesBloc />
+          <SaisieDonneesBloc ajouterTache={ajouterTache} />
         </View>
         <View style={styles.bloc}>
-          <AffichageDonneesBloc />
+          <AffichageDonneesBloc
+            taches={taches}
+            onSupprimerTache={supprimerTache}
+          />
         </View>
       </View>
     </View>

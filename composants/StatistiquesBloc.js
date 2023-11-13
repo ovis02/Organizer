@@ -1,33 +1,35 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const StatistiquesBloc = () => {
+const StatistiquesBloc = ({ taches }) => {
+  const tachesAFaire = taches.filter((tache) => !tache.terminee);
+  const tachesTerminees = taches.filter((tache) => tache.terminee);
+
   return (
     <View style={styles.container}>
       <View style={styles.taskContainer}>
         <Text style={styles.label}> Tâches à faire</Text>
         <View style={styles.counterContainer}>
-          <Text style={styles.counter}>0</Text>
+          <Text style={styles.counter}>{tachesAFaire.length}</Text>
         </View>
       </View>
 
       <View style={styles.taskContainer}>
         <Text style={styles.label}> Tâches terminées</Text>
         <View style={styles.counterContainer}>
-          <Text style={styles.counter}>0</Text>
+          <Text style={styles.counter}>{tachesTerminees.length}</Text>
         </View>
       </View>
 
       <View style={styles.taskContainer}>
         <Text style={styles.label}> Total des tâches</Text>
         <View style={styles.counterContainer}>
-          <Text style={styles.counter}>0</Text>
+          <Text style={styles.counter}>{taches.length}</Text>
         </View>
       </View>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     width: 300,
