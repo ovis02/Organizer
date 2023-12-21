@@ -11,7 +11,7 @@ export default function App() {
 
   const ajouterTache = (nouvelleTache) => {
     const nouvelleTacheObj = {
-      id: Math.random(), // Générez un identifiant unique (peut être géré différemment)
+      id: Math.random(), // Génére un identifiant unique (peut être géré différemment)
       texte: nouvelleTache,
     };
 
