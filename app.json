@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "organisateur-de-taches",
+    "slug": "organisateur-de-taches",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/stylo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/stylo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "rgba(234, 220, 26, 0.2)"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {},
+    "web": {
+      "fonts": {
+        "IngridDarling": "./assets/fonts/IngridDarling-Regular.ttf"
+      }
+    }
+  }
+}
