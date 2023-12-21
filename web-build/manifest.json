@@ -1,0 +1,9 @@
+{
+  "background_color": "rgba(234, 220, 26, 0.2)",
+  "display": "standalone",
+  "lang": "en",
+  "name": "organisateur-de-taches",
+  "short_name": "organisateur-de-taches",
+  "start_url": "/?utm_source=web_app_manifest",
+  "orientation": "portrait"
+}
